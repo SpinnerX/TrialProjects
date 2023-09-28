@@ -1,6 +1,8 @@
+![Screenshot 2023-09-26 at 8 43 38 PM](https://github.com/SpinnerX/TrialProjects/assets/56617292/de5f892a-c994-475c-998f-6f138c2ead69)
+
 
 ## Overview
-For this project, I implemented Dijkstra's algorithm for solving the maze. This maze can be randomly generated, or you righht click to start thhe maze solving process.
+For the SJSU Robotics Intelligent Systems trial project, I implemented the pathfinder Dijkstra's algorithm to help solve a maze. Which allows users to draf
 
 ## How to
 

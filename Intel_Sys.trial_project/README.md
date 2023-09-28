@@ -2,7 +2,10 @@
 
 
 ## Overview
-For the SJSU Robotics Intelligent Systems trial project, I implemented the pathfinder Dijkstra's algorithm to help solve a maze. Which allows users to draf
+For the SJSU Robotics Intelligent Systems trial project, I implemented the pathfinder Dijkstra's algorithm to help solve a maze. Which allows users to drag the mouse to see the different kinds of ways the maze could be solved.
+
+## Resourceful Links
+`https://www.youtube.com/watch?v=KiCBXu4P-2Y&t=286s&ab_channel=WilliamFiset` - used this YouTube to help with the maze generator, as that be quite tricky. 
 
 ## How to
 
@@ -11,3 +14,5 @@ For the SJSU Robotics Intelligent Systems trial project, I implemented the pathf
 `Middle-click` - To clear the maze, and re-generate a new maze. \
 `Click Escape` - To exit the window
 
+## Behind the Scenes
+W

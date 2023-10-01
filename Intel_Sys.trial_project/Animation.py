@@ -2,7 +2,7 @@ import pygame
 from pygame.locals import *
 from MazeGenerator import MazeGenerator
 import sys
-from Djikstra import Dijkstras
+from Dijkstras import Dijkstras
 from Button import Button
 from Tile import Tile
 import random

@@ -21,13 +21,13 @@ First part - Maze generation
 - Using Dijkstra's Algorithm, for the maze solver
 - Simulating how to demonstrate how Dijkstra's work when given a different ending points, simulating how this can work in various environments
 
-
-## Features
-
-`Right-click` - To stop from tracking thhe mouse to leave the algorithm in place
-`Left-click`  - To start the algorithm and drag your mouse to see the different possibilities this algorithm may use
-`Middle-click` - To clear the maze, and re-generate a new maze.
+## UI Features
+### Mouse Clicks
+`Right-click` - To stop from tracking thhe mouse to leave the algorithm in place \
+`Left-click`  - To start the algorithm and drag your mouse to see the different possibilities this algorithm may use \
+`Middle-click` - To clear the maze, and re-generate a new maze. \
 `Click Escape` - To exit the window
 
-`Generate New` - Click on this button to generate a new button
-`Clear` - As it says, to clear the maze
+### Buttons
+`Generate New` - Click on this button to generate a new randomized maze \
+`Clear` - Clears and resets the maze

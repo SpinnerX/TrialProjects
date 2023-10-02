@@ -5,16 +5,21 @@
 For the SJSU Robotics Intelligent Systems trial project, I implemented the pathfinder Dijkstra's algorithm to help solve a maze. Which allows users to drag the mouse to see the different kinds of ways the maze could be solved.
 
 ## Resourceful Links
-`https://www.youtube.com/watch?v=KiCBXu4P-2Y&t=286s&ab_channel=WilliamFiset` - useful idea from this YouTube to help with maze generator.
+`https://www.youtube.com/watch?v=KiCBXu4P-2Y&t=286s&ab_channel=WilliamFiset` - useful idea from this YouTube to help with maze generator. \
+ `https://youtu.be/sVcB8vUFlmU?si=_65d2dp7PNN2aAZb` - video used as part of the journey in looking into maze generation  \
+ `https://www.youtube.com/watch?v=jZQ31-4_8KM&ab_channel=RocketsandRobotics` - video that discusses visually on how maze generation works.
 
 ## Design
 For this trial project the design was to easily simulate how a maze solver would initially solve a maze, in real-time. So, a creative way that I wanted to look into was animating how thhe lines would adjust when the user is allowed to change the ending point.
 
 So, I designed the project in two parts
 
+## Issues Occurred
+The issues that I came across was generating and ranomizing how mazes would be generated
+
 First part - Maze generation
 - If you look at how the maze is generated, is we simply create a tile grid based on the maze dimensions. Where we use DFS to visually chhange thhe tile grid and filter out thhe lines of each tile, generating the maze.
-- Hence creating an offset of based on the amount of tiles a and then grabbing the starting and ending of vertical lines. As handling the offsets. As we have offsets for both the horizontal lines, top-left, top-right corners of a tile. 
+- Hence creating an offset of based on the amount of tiles a and then grabbing the starting and ending of vertical lines. As handling the offsets. As we have offsets for both the horizontal lines, top-left, top-right corners of a tile.
 -  Including offsets representing as the lines diagonaly that help generate and connect bottom left and right corners of tiles.
 
 ## Implementation

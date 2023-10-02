@@ -224,8 +224,8 @@ def main():
                 #             # pygame.draw.rect(surface, coloredLine, pygame.Rect(*bottom_border_offset1))
 
                 if not (x-1, y, x, y) in maze.openedEntranceToCells and not doesContainStartingCoords:
-                    # pygame.draw.line(window, wallsColor, *right_border_offset, width=thickness)
-                    renderLine(window, wallsColor, *right_border_offset, thickness)
+                    pygame.draw.line(window, wallsColor, *right_border_offset, width=thickness)
+                    # renderLine(window, wallsColor, *right_border_offset, thickness)
                     # pygame.draw.rect(window, wallsColor, pygame.Rect(*right_border_offset))
 
                     # pygame.draw.line(window, wallsColor, (right_border_offset[0].x, right_border_offset[0].y), (right_border_offset[1].x, right_border_offset[1].y), width=lineThickness)

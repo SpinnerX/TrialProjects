@@ -2,7 +2,7 @@
 
 
 ## Overview
-For the SJSU Robotics Intelligent Systems trial project, I implemented the pathfinder Dijkstra's algorithm to help solve a maze. Which allows users to drag the mouse to see the different kinds of ways the maze could be solved.
+For the SJSU Robotics Intelligent Systems trial project, I implemented the Dijkstra's algorithm to help solve a maze. Which allows users to drag the mouse to see the different kinds of ways the maze could be solved through the mouse. Allowing users to modify the ending coordinates in the maze to show different results in the way the maze can be solved by Dijkstras algorithm
 
 
 ## Design

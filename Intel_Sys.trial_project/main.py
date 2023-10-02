@@ -8,6 +8,9 @@ from Tile import Tile
 from Animation import Animations
 import sys
 
+def renderLine(window, color, offset, thickness):
+    pygame.draw.line(window, color, *offset, width=thickness)
+
 def main():
     pygame.init()
     size = width, height = 1202, 920
@@ -24,7 +27,7 @@ def main():
     maze = MazeGenerator(mazeSize)
     dijkstra = Dijkstras(maze)
 
-    solution = []
+    shortestPath = [] # Shortest path, so we can draw the path and represent it as a line
     boardX, boardY = (20, 20)
 
     start = None
@@ -38,7 +41,7 @@ def main():
     cyanColor = pygame.Color(224, 255, 255) # Light cyan
     # coloredLine = pygame.Color('yellow') #
     coloredLine = pygame.Color((144, 238, 144)) # light green
-    lineThickness = 4
+    thickness = 10
     
     # Loading assets
     background_wallpaper = pygame.image.load('assets/background2.jpg')
@@ -138,16 +141,16 @@ def main():
         # We are checking if the starting and ending positions variables are clear and deciding if we need to render anythihng or not
         # Backtracking
         if end == None and start == None:
-            solution.clear()
+            shortestPath.clear()
         elif end == None and start != None:
             dijkstra.solve(start, mouseCurrentTile)
-            solution = dijkstra.resultedShortestPath()
+            shortestPath = dijkstra.resultedShortestPath()
         elif end != None and start == None:
             dijkstra.solve(end, mouseCurrentTile)
-            solution = dijkstra.resultedShortestPath()
+            shortestPath = dijkstra.resultedShortestPath()
         else:
             dijkstra.solve(start, end)
-            solution = dijkstra.resultedShortestPath()
+            shortestPath = dijkstra.resultedShortestPath()
 
         if currentTileAnimate != None:
             cyanColor.a = 250 # Setting thhe transparency
@@ -188,32 +191,65 @@ def main():
                 bottom_border_offset1 = ((boardX+x*tileSize + tileSize // 2, boardY+y*tileSize + tileSize//2),(boardX+x*tileSize + tileSize//2, boardY+y*tileSize + 3*(tileSize//2))) # Handles thhe bottom left and right corners of the tile.
                 
                 # Manually checking if the top, right, left, bottom walls are connected or if the next term is a wall
+
+                # neighboringCells = [1, -1]
+                # for i in range(len(neighboringCells)):
+                #     if not (x-1, y, x, y) in maze.openedEntranceToCells and not doesContainStartingCoords:
+                #         pygame.draw.line(window, wallsColor, *right_border_offset, width=thickness)
+                #         # renderLine(window, wallsColor, *right_border_offset, thickness)
+                #         # pygame.draw.rect(window, wallsColor, pygame.Rect(*right_border_offset))
+
+                #         # pygame.draw.line(window, wallsColor, (right_border_offset[0].x, right_border_offset[0].y), (right_border_offset[1].x, right_border_offset[1].y), width=lineThickness)
+                #     else:
+                #         if (x+i, y) in shortestPath and (x,y) in shortestPath:
+                #             pygame.draw.line(window, coloredLine, *right_border_offset1, width=thickness)
+
+                #     if not (x,y,x+i,y) in maze.openedEntranceToCells:
+                #         pygame.draw.line(window, wallsColor, *left_border_offset, width=thickness)
+                #     else:
+                #         if (x, y) in shortestPath and (x+i,y) in shortestPath:
+                #             pygame.draw.line(window, coloredLine, *left_border_offset1, width=thickness)
+                        
+                #     if not (x,y+i,x,y) in maze.openedEntranceToCells:
+                #         pygame.draw.line(window, wallsColor, *tileMazeCell_offset, width=thickness)
+                #     else:
+                #         if (x, y+i) in shortestPath and (x,y) in shortestPath:
+                #             pygame.draw.line(window, coloredLine, *tileMazeCell_offset1, width=thickness)
+                        
+                #     if not (x,y,x,y+1) in maze.openedEntranceToCells and not doesContainEndingCoords:
+                #         pygame.draw.line(window, wallsColor, *bottom_border_offset, width=thickness)
+                #     else:
+                #         if (x, y) in shortestPath and (x, y+i) in shortestPath:
+                #             pygame.draw.line(window, coloredLine, *bottom_border_offset1, width=thickness)
+                #             # pygame.draw.rect(surface, coloredLine, pygame.Rect(*bottom_border_offset1))
+
                 if not (x-1, y, x, y) in maze.openedEntranceToCells and not doesContainStartingCoords:
-                    pygame.draw.line(window, wallsColor, *right_border_offset, width=lineThickness)
+                    # pygame.draw.line(window, wallsColor, *right_border_offset, width=thickness)
+                    renderLine(window, wallsColor, *right_border_offset, thickness)
                     # pygame.draw.rect(window, wallsColor, pygame.Rect(*right_border_offset))
 
                     # pygame.draw.line(window, wallsColor, (right_border_offset[0].x, right_border_offset[0].y), (right_border_offset[1].x, right_border_offset[1].y), width=lineThickness)
                 else:
-                    if (x-1, y) in solution and (x,y) in solution:
-                        pygame.draw.line(window, coloredLine, *right_border_offset1, width=lineThickness)
+                    if (x-1, y) in shortestPath and (x,y) in shortestPath:
+                        pygame.draw.line(window, coloredLine, *right_border_offset1, width=thickness)
 
                 if not (x,y,x+1,y) in maze.openedEntranceToCells:
-                    pygame.draw.line(window, wallsColor, *left_border_offset, width=lineThickness)
+                    pygame.draw.line(window, wallsColor, *left_border_offset, width=thickness)
                 else:
-                    if (x, y) in solution and (x+1,y) in solution:
-                        pygame.draw.line(window, coloredLine, *left_border_offset1, width=lineThickness)
+                    if (x, y) in shortestPath and (x+1,y) in shortestPath:
+                        pygame.draw.line(window, coloredLine, *left_border_offset1, width=thickness)
                     
                 if not (x,y-1,x,y) in maze.openedEntranceToCells:
-                    pygame.draw.line(window, wallsColor, *tileMazeCell_offset, width=lineThickness)
+                    pygame.draw.line(window, wallsColor, *tileMazeCell_offset, width=thickness)
                 else:
-                    if (x, y-1) in solution and (x,y) in solution:
-                        pygame.draw.line(window, coloredLine, *tileMazeCell_offset1, width=lineThickness)
+                    if (x, y-1) in shortestPath and (x,y) in shortestPath:
+                        pygame.draw.line(window, coloredLine, *tileMazeCell_offset1, width=thickness)
                     
                 if not (x,y,x,y+1) in maze.openedEntranceToCells and not doesContainEndingCoords:
-                    pygame.draw.line(window, wallsColor, *bottom_border_offset, width=lineThickness)
+                    pygame.draw.line(window, wallsColor, *bottom_border_offset, width=thickness)
                 else:
-                    if (x, y) in solution and (x, y+1) in solution:
-                        pygame.draw.line(window, coloredLine, *bottom_border_offset1, width=lineThickness)
+                    if (x, y) in shortestPath and (x, y+1) in shortestPath:
+                        pygame.draw.line(window, coloredLine, *bottom_border_offset1, width=thickness)
                         # pygame.draw.rect(surface, coloredLine, pygame.Rect(*bottom_border_offset1))
 
         generateNewButton.draw(window)

@@ -4,10 +4,6 @@
 ## Overview
 For the SJSU Robotics Intelligent Systems trial project, I implemented the pathfinder Dijkstra's algorithm to help solve a maze. Which allows users to drag the mouse to see the different kinds of ways the maze could be solved.
 
-## Resourceful Links
-`https://www.youtube.com/watch?v=KiCBXu4P-2Y&t=286s&ab_channel=WilliamFiset` - useful idea from this YouTube to help with maze generator. \
- `https://youtu.be/sVcB8vUFlmU?si=_65d2dp7PNN2aAZb` - video used as part of the journey in looking into maze generation  \
- `https://www.youtube.com/watch?v=jZQ31-4_8KM&ab_channel=RocketsandRobotics` - video that discusses visually on how maze generation works.
 
 ## Design
 For this trial project the design was to easily simulate how a maze solver would initially solve a maze, in real-time. So, a creative way that I wanted to look into was animating how thhe lines would adjust when the user is allowed to change the ending point.
@@ -36,3 +32,13 @@ First part - Maze generation
 ### Buttons
 `Generate New` - Click on this button to generate a new randomized maze \
 `Clear` - Clears and resets the maze
+
+## Resourceful Links
+`https://www.youtube.com/watch?v=KiCBXu4P-2Y&t=286s&ab_channel=WilliamFiset` - useful idea from this YouTube to help with maze generator. \
+ `https://youtu.be/sVcB8vUFlmU?si=_65d2dp7PNN2aAZb` - video used as part of the journey in looking into maze generation  \
+ `https://www.youtube.com/watch?v=jZQ31-4_8KM&ab_channel=RocketsandRobotics` - video that discusses visually on how maze generation works.
+
+## Here are my references to my older projects that helped me with this Trial project
+`https://github.com/SpinnerX/Portfolios_2023/tree/main/AlgorithmVisualizer` \
+`https://github.com/SpinnerX/portfolios/tree/main/bridges_mountains`
+- These were projects that helped me in implementing Dijkstra's algorithm because sometimes I do forget, and these were projects I referenced as part of my trial project.

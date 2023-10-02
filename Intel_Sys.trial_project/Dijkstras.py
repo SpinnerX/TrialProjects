@@ -81,5 +81,6 @@ class Dijkstras():
 
     # Backtracking from ending point to starting point, since the mouse being dragged is thhe ending point.
     # This allows thhe maze solver to have changes when dragging the mouse
-    def get_solution(self):
+    # In other words the shortest path (this is how the line is rendered onto the maze)
+    def resultedShortestPath(self):
         return self.shortestPathVisitedSolution

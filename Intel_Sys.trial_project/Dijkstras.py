@@ -13,14 +13,15 @@ class Dijkstras():
         
         queue = [start]
 
+        # For some reason python does not allow to create 2D lists in the 2D for-loop, so creating the one-liner
         dist = [[-1 for temp in range(self.maze.size[1])]for temp in range(self.maze.size[0])]
         # dist = []
 
         # for i in range(self.maze.size[1]):
         #     rows = []
-        #     for j in range(self.maze.size[1]):
+        #     for j in range(self.maze.size[0]):
         #         rows.append(-1)
-        #         dist.append(rows)
+        #     dist.append(rows)
 
         while len(queue) > 0:
             current = queue.pop(0)

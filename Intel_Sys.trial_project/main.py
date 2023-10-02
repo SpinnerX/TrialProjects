@@ -17,6 +17,7 @@ def main():
     FPS = 60 # Frame rate per second
     
     window = pygame.display.set_mode(size)
+    pygame.display.set_caption("Intelligent Systems Trial Project")
 
     surface = pygame.Surface(size)
     clock = pygame.time.Clock()

@@ -116,6 +116,7 @@ def main():
         print(f"CURRENT (X, Y) = ({x}, {y})")
 
         # This is how we animate the tile onto the maze
+        # Bounds checking
         if x >= 0 and y >= 0 and x < mazeSize[0] and y < mazeSize[1]:
             mouseCurrentTile = Tile(x,y)
             if currentTileAnimate != mouseCurrentTile:
@@ -126,7 +127,7 @@ def main():
         # animation.update(mouseCurrentTile, x, y)
 
         # We are checking if the starting and ending positions variables are clear and deciding if we need to render anythihng or not
-        #  Backtracking
+        # Backtracking
         if end == None and start == None:
             solution.clear()
         elif end == None and start != None:
@@ -153,8 +154,6 @@ def main():
         for x in range(mazeSize[0]):
             for y in range(mazeSize[1]):
                 # Top-right corner X, Y = 1020, 23
-                # mazeCorners = [] # This will contain an array of thhe corners of the maze, which will allow us to generate new corners when we newly start the maze, to when we regenerate a new maze
-
                 # doesContainStartingCoords = (x+y == 0) # This allows us to check if this is a starting point, if it is to not draw a wall
                 doesContainStartingCoords = (x == 0 and y == 0) # This allows us to check if this is a starting point, if it is to not draw a wall
                 # doesContainStartingCoords = (x == mazeSize[0]-1 and y == 0) # This allows us to check if this is a starting point, if it is to not draw a wall
@@ -182,6 +181,8 @@ def main():
                 # Manually checking if the top, right, left, bottom walls are connected or if the next term is a wall
                 if not (x-1, y, x, y) in maze.openedEntranceToCells and not doesContainStartingCoords:
                     pygame.draw.line(window, wallsColor, *right_border_offset, width=lineThickness)
+                    # pygame.draw.rect(window, wallsColor, pygame.Rect(*right_border_offset))
+
                     # pygame.draw.line(window, wallsColor, (right_border_offset[0].x, right_border_offset[0].y), (right_border_offset[1].x, right_border_offset[1].y), width=lineThickness)
                 else:
                     if (x-1, y) in solution and (x,y) in solution:
@@ -204,6 +205,7 @@ def main():
                 else:
                     if (x, y) in solution and (x, y+1) in solution:
                         pygame.draw.line(window, coloredLine, *bottom_border_offset1, width=lineThickness)
+                        # pygame.draw.rect(surface, coloredLine, pygame.Rect(*bottom_border_offset1))
 
         generateNewButton.draw(window)
         clearButton.draw(window)

@@ -6,6 +6,7 @@ from Dijkstras import Dijkstras
 from Button import Button
 from Tile import Tile
 from Animation import Animations
+import sys
 
 def main():
     pygame.init()
@@ -17,7 +18,7 @@ def main():
     surface = pygame.Surface(size)
     clock = pygame.time.Clock()
 
-    mazeSize = (25, 20)
+    mazeSize = (25, 20) # rows and cols for maze dimensions
     tileSize = 40 # Amt of tiles to generate in the window, for the maze (since we generate a tile and using DFS to generate and visualize actual maze before using Dijkstras to solve the maze)
 
     maze = MazeGenerator(mazeSize)
@@ -46,6 +47,7 @@ def main():
     # Creating button to generate new maze
     generateNewButton = Button(cyanColor, x=1050, y=150, width=130, height=50, text="New Maze")
     clearButton = Button(cyanColor,x=1050, y=250, width=130, height=50, text="Clear")
+    quitButton = Button(cyanColor, x=1050, y=350, width=130, height=50, text="Quit App")
 
     # animation = Animations(mazeSize, coloredLine)
 
@@ -96,14 +98,21 @@ def main():
                         end = Tile(x, y, -1)
             
             # Checking if the buttons have been clicked
+            # Generate new maze
             if clearButton.processEvents(event, pygame.mouse.get_pos()) == True:
                 start = None
                 end = None
 
+            # Clear current maze, and does not randomize creating a new maze
             if generateNewButton.processEvents(event, pygame.mouse.get_pos()) == True:
                 start = None
                 end = None
                 maze.generate()
+            
+            # Quit button just so user can simply quit the application
+            if quitButton.processEvents(event, pygame.mouse.get_pos()) == True:
+                pygame.quit()
+                sys.exit()
 
         # Handling the position of the mouse specifics in the maze whhen detected through event handler
         # top-right corner = (x, y) = ()
@@ -132,13 +141,13 @@ def main():
             solution.clear()
         elif end == None and start != None:
             dijkstra.solve(start, mouseCurrentTile)
-            solution = dijkstra.get_solution()
+            solution = dijkstra.resultedShortestPath()
         elif end != None and start == None:
             dijkstra.solve(end, mouseCurrentTile)
-            solution = dijkstra.get_solution()
+            solution = dijkstra.resultedShortestPath()
         else:
             dijkstra.solve(start, end)
-            solution = dijkstra.get_solution()
+            solution = dijkstra.resultedShortestPath()
 
         if currentTileAnimate != None:
             cyanColor.a = 250 # Setting thhe transparency
@@ -209,6 +218,7 @@ def main():
 
         generateNewButton.draw(window)
         clearButton.draw(window)
+        quitButton.draw(window)
         pygame.display.update()
 
         clock.tick(FPS)

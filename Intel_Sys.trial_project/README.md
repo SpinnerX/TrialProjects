@@ -14,13 +14,15 @@ So, I designed the project in two parts
 The issues that I came across was generating and ranomizing how mazes would be generated
 
 First part - Maze generation
-- If you look at how the maze is generated, is we simply create a tile grid based on the maze dimensions. Where we use DFS to visually chhange thhe tile grid and filter out thhe lines of each tile, generating the maze.
-- Hence creating an offset of based on the amount of tiles a and then grabbing the starting and ending of vertical lines. As handling the offsets. As we have offsets for both the horizontal lines, top-left, top-right corners of a tile.
--  Including offsets representing as the lines diagonaly that help generate and connect bottom left and right corners of tiles.
+- If you look at how the maze is generated, we simply create a tile grid based on the maze dimensions. Where we use DFS to visually chhange thhe tile grid and filter out the lines of each tile, generating the maze.
+- Hence creating an offset of based on the amount of tiles a and then grabbing the starting and ending of vertical lines. As handling the offsets. As we have offsets for both the horizontal lines, the top-left, and top-right corners of a tile.
+-  Including offsets representing as the lines diagonally that help generate and connect the tiles' bottom left and right corners.
 
 ## Implementation
 - Using Dijkstra's Algorithm, for the maze solver
-- Simulating how to demonstrate how Dijkstra's work when given a different ending points, simulating how this can work in various environments
+- Simulating how to demonstrate how Dijkstra's work when given different ending points, simulating how this can work in various environments
+- How Dijkstra solves the maze, is by giving the starting coordinates and the ending coordinates. Then using the queue list data structure, starting with the current tile (which is the starting coordinates), check the neighboring tile's distance and draw a line to which neighboring tiles have the least distance. Since the main point is to find the optimal path which is the least amount of distance of each neighboring tile.
+- Dijkstra's algorithm keeps executing until the ending coordinate has been reached. While this algorithm is executing, we have a list that keeps track of the shortest paths, and when we draw a line, when see how the solver solves the maze giving different ending coordinates. We use that list to see constantly the shortest path when searching the neighboring tiles.
 
 ## UI Features
 ### Mouse Clicks
